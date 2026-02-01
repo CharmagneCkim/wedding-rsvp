@@ -80,10 +80,11 @@ function saveRSVP(rsvpData) {
 }
 
 // Airtable Configuration
-// Replace these with your actual Airtable credentials
-const AIRTABLE_BASE_ID = appEOTBRVbQUXHtIG;
-const AIRTABLE_API_KEY = patlDphtHjPxJYtm1;
-const AIRTABLE_TABLE_NAME = 'RSVPs'; // Name of your table in Airtable
+// Credentials are loaded from config.js (which is in .gitignore)
+// If config.js doesn't exist, these will be undefined and Airtable integration will be skipped
+const AIRTABLE_BASE_ID = typeof AIRTABLE_CONFIG !== 'undefined' ? AIRTABLE_CONFIG.BASE_ID : undefined;
+const AIRTABLE_API_KEY = typeof AIRTABLE_CONFIG !== 'undefined' ? AIRTABLE_CONFIG.API_KEY : undefined;
+const AIRTABLE_TABLE_NAME = typeof AIRTABLE_CONFIG !== 'undefined' ? AIRTABLE_CONFIG.TABLE_NAME : 'RSVPs';
 
 // Send RSVP to Airtable
 async function sendRSVPToServer(rsvpData) {

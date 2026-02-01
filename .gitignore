@@ -1,0 +1,15 @@
+# Airtable Configuration (contains sensitive API keys)
+config.js
+
+# Node modules (if you add any)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
