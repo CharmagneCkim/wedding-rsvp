@@ -79,15 +79,49 @@ function saveRSVP(rsvpData) {
     sendRSVPToServer(rsvpData);
 }
 
-// Send RSVP to server (optional - for production use)
+// Airtable Configuration
+// Replace these with your actual Airtable credentials
+const AIRTABLE_BASE_ID = appEOTBRVbQUXHtIG;
+const AIRTABLE_API_KEY = patlDphtHjPxJYtm1;
+const AIRTABLE_TABLE_NAME = 'RSVPs'; // Name of your table in Airtable
+
+// Send RSVP to Airtable
 async function sendRSVPToServer(rsvpData) {
-    // This is a placeholder for server integration
-    // In production, you would send this to your backend API
+    // Skip if credentials are not configured
+    if (AIRTABLE_BASE_ID === 'YOUR_AIRTABLE_BASE_ID' || AIRTABLE_API_KEY === 'YOUR_AIRTABLE_API_KEY') {
+        console.log('Airtable not configured. RSVP saved to localStorage only.');
+        return;
+    }
+
     try {
-        // Example: await fetch('/api/rsvp', { method: 'POST', body: JSON.stringify(rsvpData) });
-        console.log('RSVP data:', rsvpData);
+        const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                fields: {
+                    'Guest Name': rsvpData.guestName,
+                    'Email': rsvpData.email,
+                    'Phone': rsvpData.phone || '',
+                    'Attendance': rsvpData.attendance,
+                    'Guest Count': rsvpData.guestCount || '0',
+                    'Dietary Restrictions': rsvpData.dietary || '',
+                    'Message': rsvpData.message || '',
+                    'Submitted At': rsvpData.submittedAt
+                }
+            })
+        });
+
+        if (response.ok) {
+            console.log('RSVP successfully saved to Airtable');
+        } else {
+            const errorData = await response.json();
+            console.error('Airtable API error:', errorData);
+        }
     } catch (error) {
-        console.error('Error sending RSVP to server:', error);
+        console.error('Error sending RSVP to Airtable:', error);
         // Data is still saved in localStorage as backup
     }
 }
