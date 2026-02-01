@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP Admin - Wedding RSVP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Wedding RSVP Admin</h1>
+            <a href="index.html" class="back-link">← Back to RSVP Form</a>
+        </header>
+
+        <div class="admin-stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalRSVPs">0</div>
+                <div class="stat-label">Total RSVPs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="attendingCount">0</div>
+                <div class="stat-label">Attending</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="notAttendingCount">0</div>
+                <div class="stat-label">Not Attending</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalGuests">0</div>
+                <div class="stat-label">Total Guests</div>
+            </div>
+        </div>
+
+        <div class="admin-controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by name or email...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="yes">Attending</button>
+                <button class="filter-btn" data-filter="no">Not Attending</button>
+                <button class="filter-btn" data-filter="maybe">Maybe</button>
+            </div>
+            <button class="export-btn" id="exportBtn">Export to CSV</button>
+        </div>
+
+        <div class="rsvp-list" id="rsvpList">
+            <!-- RSVPs will be dynamically inserted here -->
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+            <p>No RSVPs found matching your criteria.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

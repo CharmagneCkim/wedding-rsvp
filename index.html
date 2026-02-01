@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wedding RSVP - Please join us for our special day">
+    <title>Wedding RSVP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="couple-names">Malvinjohn & Cristell Ann's Wedding</h1>
+                <p class="wedding-date">October 17, 2026 @ 12:00 pm</p>
+                <p class="wedding-location">Diocesan Shrine and Parish of Our Lady of Fatima</p>
+                <p class="wedding-location">Urduja Village, Caloocan City</p>
+                <div class="decorative-line"></div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section class="rsvp-section" id="rsvp">
+            <div class="rsvp-container">
+                <h2>We'd Love to Celebrate With You</h2>
+                <p class="subtitle">Please let us know if you'll be joining us</p>
+                
+                <form id="rsvpForm" class="rsvp-form">
+                    <div class="form-group">
+                        <label for="guestName">Your Name *</label>
+                        <input type="text" id="guestName" name="guestName" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attendance">Will you be attending? *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="yes" required>
+                                <span>Yes, I'll be there!</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="no" required>
+                                <span>Sorry, I can't make it</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="maybe" required>
+                                <span>Maybe</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="guestCountGroup" style="display: none;">
+                        <label for="guestCount">Number of Guests (including yourself) *</label>
+                        <select id="guestCount" name="guestCount">
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5+ Guests</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dietary">Dietary Restrictions or Allergies</label>
+                        <textarea id="dietary" name="dietary" rows="3" placeholder="Please let us know about any dietary restrictions or allergies"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message for the Couple</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Share your thoughts or well wishes..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit RSVP</button>
+                </form>
+
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <h3>Thank You!</h3>
+                    <p>Your RSVP has been received. We're looking forward to celebrating with you!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Details Section -->
+        <section class="details-section">
+            <div class="details-container">
+                <div class="details-header">
+                    <h2>Wedding Details</h2>
+                    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle navigation">
+                        <span class="toggle-icon">☰</span>
+                        <span class="toggle-text">Menu</span>
+                    </button>
+                </div>
+
+                <div class="details-layout">
+                    <!-- Sidebar Navigation -->
+                    <aside class="details-sidebar" id="detailsSidebar">
+                        <nav class="sidebar-nav">
+                            <ul class="nav-list">
+                                <li>
+                                    <a href="#date-time" class="nav-link active" data-section="date-time">
+                                        <span class="nav-icon">📅</span>
+                                        <span class="nav-text">Date & Time</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#location" class="nav-link" data-section="location">
+                                        <span class="nav-icon">📍</span>
+                                        <span class="nav-text">Location</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#dress-code" class="nav-link" data-section="dress-code">
+                                        <span class="nav-icon">👔</span>
+                                        <span class="nav-text">Dress Code</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#parking" class="nav-link" data-section="parking">
+                                        <span class="nav-icon">🚗</span>
+                                        <span class="nav-text">Parking</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#map" class="nav-link" data-section="map">
+                                        <span class="nav-icon">🗺️</span>
+                                        <span class="nav-text">Map</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </aside>
+
+                    <!-- Main Content Area -->
+                    <div class="details-content">
+                        <!-- Date & Time Section -->
+                        <div class="detail-section" id="date-time">
+                            <div class="detail-card-full">
+                                <div class="detail-icon">📅</div>
+                                <h3>Date & Time</h3>
+                                <div class="detail-content">
+                                    <p class="detail-main">Saturday, October 17, 2026</p>
+                                    <p class="detail-time">Ceremony: 12:00 PM</p>
+                                    <p class="detail-sub">Please arrive 30 minutes early</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location Section -->
+                        <div class="detail-section" id="location">
+                            <div class="detail-card-full">
+                                <div class="detail-icon">📍</div>
+                                <h3>Church Location</h3>
+                                <div class="detail-content">
+                                    <p class="detail-main">Diocesan Shrine and Parish of Our Lady of Fatima</p>
+                                    <p>Kumintang cor. Magat Salamat Sts., Urduja Village, Novaliches</p>
+                                    <p>Caloocan, Philippines, 1420</p>
+                                </div>
+                                <h3>Reception Location</h3>
+                                <div class="detail-content">
+                                    <p class="detail-main">Torre de Ignacio Events Place and Pools</p>
+                                    <p>Susano Rd, Novaliches</p>
+                                    <p>Brgy 168. Deparo, Philippines, 1420</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dress Code Section -->
+                        <div class="detail-section" id="dress-code">
+                            <div class="detail-card-full">
+                                <div class="detail-icon">👔</div>
+                                <h3>Dress Code</h3>
+                                <div class="detail-content">
+                                    <p class="detail-main">Cocktail Attire</p>
+                                    <p class="detail-note">Semi-formal, elegant</p>
+                                    <p>We kindly request guests to dress in semi-formal attire. Please avoid white dresses.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Parking Section -->
+                        <div class="detail-section" id="parking">
+                            <div class="detail-card-full">
+                                <div class="detail-icon">🚗</div>
+                                <h3>Parking Information</h3>
+                                <div class="detail-content">
+                                    <p class="detail-main">Complimentary valet parking available</p>
+                                    <p>Parking is available on-site. Our valet service will be happy to assist you upon arrival.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Section -->
+                        <div class="detail-section" id="map">
+                            <div class="map-container">
+                                <h3>Find Us</h3>
+                                <h4 style="margin-top: 0; margin-bottom: 20px; color: var(--secondary-color);">Church Location</h4>
+                                <div class="map-wrapper">
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15433.867824997022!2d121.0185698223328!3d14.742702268616261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b04b8f8086df%3A0x7c02012afd9e338d!2sDiocesan%20Shrine%20and%20Parish%20of%20Our%20Lady%20of%20Fatima%20(Diocese%20of%20Novaliches)!5e0!3m2!1sen!2sph!4v1769944315027!5m2!1sen!2sph"
+                                        width="100%" 
+                                        height="450"
+                                        style="border:0;" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade"
+                                        title="Church Location Map">
+                                    </iframe>
+                                </div>
+                                <h4 style="margin-top: 40px; margin-bottom: 20px; color: var(--secondary-color);">Reception Location</h4>
+                                <div class="map-wrapper">
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15434.407930235444!2d121.01548139310336!3d14.7350806689581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b053682d0c03%3A0x32f4c1177ff1efaf!2sTorre%20De%20Ignacio%20Events%20Place%20and%20Pools!5e0!3m2!1sen!2sph!4v1769947509675!5m2!1sen!2sph"
+                                        width="100%" 
+                                        height="450"
+                                        style="border:0;" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade"
+                                        title="Reception Location Map">
+                                    </iframe>
+                                </div>
+                                <div class="map-actions">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Diocesan+Shrine+and+Parish+of+Our+Lady+of+Fatima+Urduja+Village+Caloocan+City+Philippines" 
+                                       target="_blank" 
+                                       class="map-link-btn">
+                                       📍 Open in Google Maps for Church
+                                    </a>
+                                    <a href="https://www.google.com/maps/dir/?api=1&destination=Diocesan+Shrine+and+Parish+of+Our+Lady+of+Fatima+Urduja+Village+Caloocan+City+Philippines" 
+                                       target="_blank" 
+                                       class="map-link-btn">
+                                       🧭 Get Directions for Church
+                                    </a>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Torre+De+Ignacio+Events+Place+and+Pools" 
+                                       target="_blank" 
+                                       class="map-link-btn">
+                                        📍 Open in Google Maps for Reception
+                                    </a>
+                                    <a href="https://www.google.com/maps/dir/?api=1&destination=Torre+De+Ignacio+Events+Place+and+Pools" 
+                                       target="_blank" 
+                                       class="map-link-btn">
+                                        🧭 Get Directions for Reception
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Link (hidden by default, can be accessed via direct URL) -->
+        <div class="admin-link-container">
+            <a href="admin.html" class="admin-link">Admin View</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
